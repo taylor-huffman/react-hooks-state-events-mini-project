@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import Task from "./Task"
 
-function TaskList() {
+function TaskList({ tasks }) {
+  const [renderTasks, setRenderTasks] = useState(tasks)
+
+  function handleSetRenderTasks(removedItem) {
+    setRenderTasks(tasks => {
+      return tasks.filter(task => task.text !== removedItem.textContent)
+    })
+  }
+
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {renderTasks.map((item, index) => (
+          <Task key={index} text={item.text} category={item.category} handleSetRenderTasks={handleSetRenderTasks} />
+        ))}
     </div>
   );
 }
