@@ -3,8 +3,13 @@ import React, { useState } from "react";
 function NewTaskForm({ categories, onTaskFormSubmit }) {
 
   const [input, setInput] = useState('')
-  const [select, setSelect] = useState('All')
+  const [select, setSelect] = useState('Code')
+  const catWithoutAll = categories.filter(category => category !== 'All')
+    .map(category => {
+      return <option key={category}>{category}</option>
+    })
 
+    
   function handleSetInput(event) {
     setInput(event.target.value)
   }
@@ -20,10 +25,6 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
     setSelect('Code')
   }
 
-  const catWithoutAll = categories.filter(category => category !== 'All')
-    .map(category => {
-      return <option key={category}>{category}</option>
-    })
 
   return (
     <form className="new-task-form" onSubmit={handleSubmit}>
