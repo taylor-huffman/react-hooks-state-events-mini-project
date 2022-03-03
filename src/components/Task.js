@@ -1,16 +1,11 @@
 import React from "react";
 
-function Task({ text, category, handleSetRenderTasks }) {
-
-  function handleDelete(event) {
-    handleSetRenderTasks(event.target.parentNode.firstChild)
-  }
-
+function Task({ text, category, handleDelete }) {
   return (
     <div className="task">
-      <div className="label">{text}</div>
-      <div className="text">{category}</div>
-      <button className="delete" onClick={handleDelete} >X</button>
+      <div className="label">{category}</div>
+      <div className="text">{text}</div>
+      <button className="delete" value={text} onClick={handleDelete}>X</button>
     </div>
   );
 }

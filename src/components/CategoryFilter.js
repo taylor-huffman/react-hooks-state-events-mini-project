@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-function CategoryFilter({ categories }) {
-  const [isSelected, setIsSelected] = useState(false)
-
-  function handleSetSelected() {
-    setIsSelected(isSelected => !isSelected)
-  }
-
+function CategoryFilter({ categories, currentCategory, handleCategoryChange }) {
   return (
     <div className="categories">
       <h5>Category filters</h5>
       {categories.map(category => {
-        return <button key={category} className={isSelected ? 'selected' : ''} onClick={handleSetSelected}>{category}</button>
+        return <button key={category} value={category} className={currentCategory === category ? 'selected' : ''} onClick={handleCategoryChange}>{category}</button>
       })}
     </div>
   );
