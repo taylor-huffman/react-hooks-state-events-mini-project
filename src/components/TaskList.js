@@ -10,6 +10,7 @@ function TaskList({ tasks, currentCategory, handleDelete }) {
       return <Task key={task.text} text={task.text} category={task.category} handleDelete={handleDelete} />
     })
 
+    
   return (
     <div className="tasks">
       {taskDisplay}
