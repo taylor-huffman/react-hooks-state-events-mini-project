@@ -1,6 +1,11 @@
 import React from "react";
 
-function CategoryFilter({ categories, currentCategory, handleCategoryChange }) {
+function CategoryFilter({ categories, currentCategory, setCurrentCategory }) {
+
+  function handleCategoryChange(event) {
+    setCurrentCategory(event.target.value)
+  }
+
   return (
     <div className="categories">
       <h5>Category filters</h5>

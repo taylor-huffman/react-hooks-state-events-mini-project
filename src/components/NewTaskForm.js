@@ -9,7 +9,7 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
       return <option key={category}>{category}</option>
     })
 
-    
+
   function handleSetInput(event) {
     setInput(event.target.value)
   }

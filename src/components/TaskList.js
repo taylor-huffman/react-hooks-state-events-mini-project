@@ -1,22 +1,21 @@
 import React from "react";
-import Task from "./Task"
+import Task from './Task'
 
-function TaskList({ tasks, currentCategory, handleDelete }) {
+function TaskList({ tasks, setTaskItems }) {
 
-  const taskDisplay = tasks.filter(task => {
-    if (currentCategory === 'All') return true
-    return task.category === currentCategory
-    }).map(task => {
-      return <Task key={task.text} text={task.text} category={task.category} handleDelete={handleDelete} />
-    })
+  function handleDelete(event) {
+    setTaskItems(tasks => tasks.filter(task => {
+      return task.text !== event.target.value
+    }))
+  }
 
-    
   return (
     <div className="tasks">
-      {taskDisplay}
+      {tasks.map(task => {
+        return <Task key={task.text} text={task.text} category={task.category} handleDelete={handleDelete} />
+      })}
     </div>
   );
 }
-
 
 export default TaskList;
